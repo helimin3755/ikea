@@ -1,0 +1,268 @@
+//변수값들 선언하기
+$메인노랑:#fbd914;
+$메인파랑:#0058ab;
+$글자색상:#111111;
+$new:#ca5008;
+$제목글자:24px;
+$가격글자:16px;
+$상품글자:14px;
+
+$pc1550:1550px;
+$pc1120:1120px;
+$pc1050:1050px;
+$mobile860:860px;
+$mobile490:490px;
+$mobile480:480px;
+
+//=====================position=====================
+@mixin pos($p: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $p;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+//=====================respond=====================
+@mixin respond($size) {
+    @media screen and (max-width: $size) {
+      @content;
+    }
+}
+body{
+    font-size: $상품글자;
+    color: $글자색상;
+    overflow-x: hidden;
+    @include respond($mobile860) {
+        font-size: 12px;
+    }
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: $메인노랑;
+    overflow-x: hidden;
+    .logo{
+        @include pos($top:20px, $left:50%);
+        transform: translateX(-50%);
+        width: 150px;
+        @include respond($pc1120){
+            width: 150px;
+        }
+        img{
+            width:100%;
+        }
+    }
+    .gnbWrap{
+        @include pos($top:40px);
+        .gnb{
+            display: flex;
+            li{
+                margin-left: 40px;
+                a{
+                    &:hover{
+                        opacity: .5;
+                    }
+                    img{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+section{
+    text-align: center;
+    h2{
+        padding-top: 40px;
+        color: $메인노랑;
+        span{
+            color: $메인파랑;
+        }
+    }
+    p{
+        padding: 20px 0px 0px 0px;
+    }
+    #daumRoughmapContainer1649333174943{
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 50px 0px;
+    }
+    .place{
+        padding: 30px 0px 30px 0px;
+        border: 1px solid whitesmoke;
+        width: 640px;
+        margin: 0px auto 30px;
+        >a{
+            font-size: 19px;
+            transition: all 1px linear;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+        .others{
+            display: flex;
+            justify-content: center;
+            li{
+                padding: 40px 20px 20px;
+                &:nth-child(1){
+                    a{
+                        color: $메인노랑;
+                        font-weight: 600;
+                        &::after{
+                            content: "";
+                            position: absolute;
+                            bottom: 17px;
+                            border: 4px solid $메인파랑;
+                            background-color: $메인파랑;
+                            border-radius: 100px;
+                            transition: all .3s linear;
+                        }
+                    }
+                }
+                a{
+                    position: relative;
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        bottom: 17px;
+                        border: 3px solid transparent;
+                        background-color: transparent;
+                        border-radius: 100px;
+                        transition: all .3s linear;
+                    }
+                    &:hover::after{
+                        content: "";
+                        position: absolute;
+                        bottom: 17px;
+                        border: 4px solid $메인파랑;
+                        background-color: $메인파랑;
+                        border-radius: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+footer{
+    overflow: hidden;
+    @include pos($p:relative);
+    color: #eee;
+    background-color: $메인파랑;
+    a{
+        color: #eee;
+        
+    }
+    .footTop{
+        display: flex;
+        margin: 0px 40px;
+        .join{
+            width: 20%;
+            margin: 80px 100px 100px 0px;
+            .footLogo{
+                font-size: $제목글자;
+                font-weight: 600;
+                margin-bottom: 40px;
+            }
+            p{
+                margin: 15px 0px;
+                line-height: 1.5em;
+                >a{
+                    text-decoration: underline;
+                    &:hover{
+                        color: $메인노랑;
+                    }
+                }
+            }
+            >a{
+                margin: 30px 0px;
+                font-size: $상품글자;
+                display: inline-block;
+                color: #111111;
+                padding: 0.75rem 1.25rem;
+                border-radius: 20px;
+                font-size: .75rem;
+                font-weight: 700;
+                line-height: 1.5;
+                background-color: $메인노랑;
+            }
+        }
+        .innerBox{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 80px 0px;
+            .footBox{
+                width: 100%;
+                text-align: left;
+                font-size: $가격글자;
+                font-weight: 600;
+                >li{
+                    margin: 30px 0px;
+                    font-size: $상품글자;
+                    font-weight: 300;
+                    a{
+                        &:hover{
+                            color: $메인노랑;
+                        }
+                    }
+                }
+            }
+        }
+        .footSns{
+            @include pos($top: 550px);
+            width: 100%;
+            .sns{
+                display: flex;
+                li{
+                    margin: 20px 50px 20px 0px;
+                    background-color: $메인노랑;
+                    border-radius: 100%;
+                    padding: 8px;
+                }
+            }
+        }
+        .global{
+            @include pos($right: 0px, $top: 550px);
+            margin: 20px 50px 20px 0px;
+            background-color: $메인노랑;
+            border-radius: 100%;
+            padding: 8px;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .footBottom{
+        border-top: 1px solid #eee;
+        padding-top: 0px;
+        margin: 50px 40px;
+        font-size: 12px;  
+        .left{
+            margin: 30px 0px;
+            >p{
+                margin-bottom: 40px;
+            }
+            .address{
+                p{
+                    margin: 5px 0px;
+                }   
+            }
+        }
+        .right{
+            @include pos($right: 20px, $bottom: 185px);
+            .notice{
+                display: flex;
+                >li{
+                    margin: 0px 10px;
+                    a{
+                        &:hover{
+                            color: $메인노랑;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
